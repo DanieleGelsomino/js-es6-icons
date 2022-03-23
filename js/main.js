@@ -4,7 +4,7 @@ console.log("JS OK!");
     consegna:
     Milestone 1
     Partendo dalla struttura dati fornita, visualizzare in pagina un box per ogni icona, 
-    n cui è presente il nome dell'icona e l'icona stessa.
+    in cui è presente il nome dell'icona e l'icona stessa.
     Milestone 2
     Ciascuna icona ha una proprietà "color": utilizzare questa proprietà per visualizzare le icone del colore corrispondente.
     Milestone 3
@@ -28,3 +28,23 @@ console.log("JS OK!");
     Inizialmente può essere sufficiente stampare dei semplici div, senza alcuno stile, con all'interno
     l'icona e uno span con il nome. Solamente quando la parte logica è completa, ci dedichiamo al css.
 */
+//******** Variabili ********//
+const containerCardsAnimals = document.getElementById("container-card");
+//******** / Variabili ********//
+
+//******** Funzioni ********//
+function generateCards(arrayGenerated) {
+  arrayGenerated.forEach((cardIcon) => {
+    const icon = document.createElement("div");
+    icon.className = "card-icon";
+    icon.innerHTML = `
+    <i class="${cardIcon.family} ${cardIcon.prefix} ${cardIcon.name} ${cardIcon.color}"></i>
+    <div class="icon-name">${cardIcon.name}</div>
+    `;
+    containerCardsAnimals.appendChild(icon);
+  });
+}
+
+generateCards(icons);
+
+//******** / Funzioni ********//
