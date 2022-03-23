@@ -38,7 +38,7 @@ function generateCards(arrayGenerated) {
     const icon = document.createElement("div");
     icon.className = "card-icon";
     icon.innerHTML = `
-    <i class="${cardIcon.family} ${cardIcon.prefix} ${cardIcon.name} ${cardIcon.color}"></i>
+    <i class="${cardIcon.family} ${cardIcon.prefix}${cardIcon.name} ${cardIcon.color}"></i>
     <div class="icon-name">${cardIcon.name}</div>
     `;
     containerCardsAnimals.appendChild(icon);
