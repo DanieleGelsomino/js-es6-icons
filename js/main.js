@@ -11,22 +11,7 @@ console.log("JS OK!");
     Aggiungere alla pagina una select in cui le options corrispondono ai vari tipi di icone (animal,
     vegetable, user). Quando l'utente seleziona un tipo dalla select,
     visualizzare solamente le icone corrispondenti.
-    BONUS
-    1- modificare la struttura dati fornita e valorizzare la proprietà "color" in modo dinamico:
-    generare in modo casuale un codice colore, sapendo che la notazione esadecimale è formata dal simbolo "#"
-    seguito da 6 caratteri alfanumerici compresi tra 0 e 9 e A e F.
-    2- popolare le options della select della milestone 3 dinamicamente.
-    Consigli del giorno
-    Come sempre, iniziamo prima di tutto dall'analisi e comprensione della consegna.
-    Scomponiamo il problema in micro-passaggi logici che solamente in un secondo momento trasformeremo in codice.
-    Le icone presenti nella struttura dati fanno riferimento alla nota libreria Font Awesome,
-    perciò come prima cosa assicuriamoci di aver inserito il link alla cdn nell'head della pagina.
-    Dopodiché, basandoci sul codice di riferimento nel sito di Font Awesome,
-    analizziamo come è formato il tag <i> di un'icona qualsiasi, in particolare focalizziamoci sulle classi.
-    Come possiamo usare i dati presenti nella nostra struttura dati per creare l'elemento html nel modo corretto
-    e visualizzare l'icona in pagina?
-    Inizialmente può essere sufficiente stampare dei semplici div, senza alcuno stile, con all'interno
-    l'icona e uno span con il nome. Solamente quando la parte logica è completa, ci dedichiamo al css.
+    
 */
 //******** Variabili ********//
 const containerCards = document.getElementById("container-card");
@@ -59,22 +44,22 @@ function selectCategory(icons, containerCards) {
 
   selectOptions.addEventListener("change", () => {
     containerCards.innerHTML = "";
-
+    // vado a recuperare tutti i valori del selectOptions
     switch (selectOptions.value) {
-      case "all":
+      case "all": // se valore é all
         generateCards(icons, containerCards);
         break;
-      case "animal":
-        const animalsArray = categories(icons, "animal");
-        generateCards(animalsArray, containerCards);
+      case "animal": // se valore é animal
+        const animalsSelect = categories(icons, "animal");
+        generateCards(animalsSelect, containerCards); // genera icons type animal
         break;
-      case "vegetable":
-        const vegetablesArray = categories(icons, "vegetable");
-        generateCards(vegetablesArray, containerCards);
+      case "vegetable": // se valore é vegetable
+        const vegetablesSelect = categories(icons, "vegetable");
+        generateCards(vegetablesSelect, containerCards); // genera icons type vegetable
         break;
-      case "user":
-        const usersArray = categories(icons, "user");
-        generateCards(usersArray, containerCards);
+      case "user": // se valore é user
+        const usersSelect = categories(icons, "user");
+        generateCards(usersSelect, containerCards); // genera icons type user
         break;
     }
   });
