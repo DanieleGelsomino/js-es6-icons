@@ -11,6 +11,7 @@ body {
 
 .container {
   margin: 50px auto;
+  height: 100vh;
 }
 
 h1 {
@@ -33,17 +34,16 @@ h1 {
 }
 
 #container-card {
-  padding: 0 10px;
+  padding: 10px 10px 80px 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
   background-color: #dddddd;
-  height: 100vh;
-  padding-bottom: 80px;
 }
 
 .card-icon {
-  flex-basis: 250px;
+  width: 250px;
+  height: 150px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;

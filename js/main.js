@@ -29,22 +29,60 @@ console.log("JS OK!");
     l'icona e uno span con il nome. Solamente quando la parte logica è completa, ci dedichiamo al css.
 */
 //******** Variabili ********//
-const containerCardsAnimals = document.getElementById("container-card");
+const containerCards = document.getElementById("container-card");
+
 //******** / Variabili ********//
 
 //******** Funzioni ********//
 function generateCards(arrayGenerated) {
+  // utilizzo il ciclo forEach per generare le card
   arrayGenerated.forEach((cardIcon) => {
+    // creo un nuovo elemento div
     const icon = document.createElement("div");
+    // assegno una classe al nuovo elemento nel quale appenderò le proprietà dell'array icons
     icon.className = "card-icon";
     icon.innerHTML = `
     <i class="${cardIcon.family} ${cardIcon.prefix}${cardIcon.name} ${cardIcon.color}"></i>
     <div class="icon-name">${cardIcon.name}</div>
     `;
-    containerCardsAnimals.appendChild(icon);
+    containerCards.appendChild(icon);
   });
 }
 
-generateCards(icons);
+function categories(icons, type) {
+  const category = icons.filter((icons) => icons.type === type);
+  return category;
+}
+
+function selectCategory(icons, containerCards) {
+  const selectOptions = document.getElementById("type-selector");
+
+  selectOptions.addEventListener("change", () => {
+    containerCards.innerHTML = "";
+
+    switch (selectOptions.value) {
+      case "all":
+        generateCards(icons, containerCards);
+        break;
+      case "animal":
+        const animalsArray = categories(icons, "animal");
+        generateCards(animalsArray, containerCards);
+        break;
+      case "vegetable":
+        const vegetablesArray = categories(icons, "vegetable");
+        generateCards(vegetablesArray, containerCards);
+        break;
+      case "user":
+        const usersArray = categories(icons, "user");
+        generateCards(usersArray, containerCards);
+        break;
+    }
+  });
+}
 
 //******** / Funzioni ********//
+
+//******** Programmi ********//
+generateCards(icons);
+selectCategory(icons, containerCards);
+//******** / Programmi ********//
